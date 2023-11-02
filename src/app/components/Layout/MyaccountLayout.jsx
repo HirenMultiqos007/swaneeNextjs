@@ -207,7 +207,7 @@ const MyAccountLayout = ({ children }) => {
           <Row>
             <Col lg="3">
               <ul className="sidebar">
-                {desktopTabs?.map((list, index) => {
+                {/* {desktopTabs?.map((list, index) => {
                   return (
                     <li
                       onClick={() => {
@@ -221,7 +221,7 @@ const MyAccountLayout = ({ children }) => {
                       }
                     ></li>
                   );
-                })}
+                })} */}
                 <li
                   onClick={() => {
                     router.push("/personal-account");

@@ -882,7 +882,7 @@ export const tabs = [
   {
     id: 1,
     title: "Order History",
-    content: <OrderHistory />,
+    // content: <OrderHistory />,
     path: "/order-history",
     icon: <Image src={MyOrderHistoryIcon} alt="MyOrderHistoryIcon" />,
   },

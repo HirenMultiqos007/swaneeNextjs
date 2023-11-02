@@ -1,3 +1,4 @@
+"use client"
 const { createSlice } = require("@reduxjs/toolkit");
 
 const AuthenticationSlice = createSlice({
@@ -9,8 +10,8 @@ const AuthenticationSlice = createSlice({
   name: "auth",
   initialState: {
     currentActiveModel: null,
-    isLogin: JSON.parse(localStorage.getItem("isLogin")) ?? null,
-    authToken: JSON.parse(localStorage.getItem("authToken")) ?? null,
+    isLogin:typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("isLogin")) : null,
+    authToken: typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("authToken")) : null,
     isEmailVerified: null,
     email: null,
     isLoading: false,
