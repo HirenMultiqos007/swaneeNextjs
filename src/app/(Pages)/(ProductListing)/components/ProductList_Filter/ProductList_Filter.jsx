@@ -14,16 +14,19 @@ import ProductGallary from "../ProductGallary/ProductGallary";
 import SelectedFilterDataCM from "../SelectedFilterDataCM/SelectedFilterDataCM";
 import { decrypt } from "@/app/Crypto/function";
 import { ProductListSuccess } from "@/app/Redux-Toolkit/Slices/ProductSlice";
+import { useParams, useSearchParams } from "next/navigation";
 
-const ProductList_Filter = ({SC_ID,categoryName}) => {
+const ProductList_Filter = ({categoryName}) => {
   const dispatch = useDispatch();
   const [curentPage, setCurentPage] = useState(1);
   const [activeFilter, setIsActiveFilter] = useState(null);
   const { activeCategory,selectedName } = useSelector((e) => e.Category);
   const { filterData, productsList } = useSelector((e) => e.Product);
 
+  const {SC_ID} = useParams()
+
   useEffect(()=> {
-    if(activeCategory || SC_ID){
+    if(activeCategory){
       dispatch(ProductListThunk({
         payload: {
           page: curentPage,
@@ -32,7 +35,7 @@ const ProductList_Filter = ({SC_ID,categoryName}) => {
           sortBy: "",
           sortKey: "",
           mainCategoryId: activeCategory,
-          categoryId: SC_ID ? SC_ID : "",
+          categoryId: SC_ID ? [SC_ID] : "",
         },
       }))
       dispatch(ProductListSuccess([]))
